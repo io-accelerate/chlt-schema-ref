@@ -1,6 +1,6 @@
 # chlt-schema-ref
 
-The Schema Reference for coding challenges hosted on the https://accelerate.io platform.
+The JSON Schema for coding challenges hosted on the https://accelerate.io platform.
 
 ## The Schema
 
@@ -8,6 +8,8 @@ This schema defines the structure for coding challenges, ensuring consistency an
 Each challenge has a unique identifier, a name, and consists of multiple rounds. 
 Each round includes a description, methods to implement, and test cases to validate the implementation. 
 
+The latest schema can be retrieved from:
+https://get.accelerate.io/challenge-toolkit/schema/version/0.1.4/schema.yaml
 
 ## Challenge Design Guidelines
 

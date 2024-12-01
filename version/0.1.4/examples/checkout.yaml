@@ -1,0 +1,24 @@
+id: CHK
+name: Supermarket checkout
+rounds:
+  - id: CHK_R1
+    description: >
+      Single line description of the supermarket checkout challenge round 1
+    methods:
+      - name: checkout
+        params: [string]
+        returns: integer
+    tests:
+      - id: CHK_R1_001
+        call:
+          method: checkout
+          args: [ABCDCBAABCABBAAA]
+        expect:
+          contains: "specific text"
+      - id: CHK_R1_002
+        call:
+          method: checkout
+          args: [ABCDCBAABCABBAAA]
+        expect:
+          equals: 2
+
