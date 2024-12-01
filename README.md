@@ -1,2 +1,3 @@
 # chlt-schema-ref
-The coding challenge JSON schema reference
+
+The Schema Reference for coding challenges run on the https://accelerate.io platform 
