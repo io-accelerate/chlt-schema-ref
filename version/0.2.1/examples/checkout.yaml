@@ -6,8 +6,12 @@ rounds:
       Single line description of the supermarket checkout challenge round 1
     methods:
       - name: checkout
-        params: [string]
-        returns: integer
+        params: 
+          - description: a string containing the SKUs of all the products in the basket
+            type: string
+        returns: 
+          description: an integer representing the total checkout value of the items 
+          type: integer
     tests:
       - id: CHK_R1_001
         call:
