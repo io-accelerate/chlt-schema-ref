@@ -9,10 +9,10 @@ Each challenge has a unique identifier, a name, and consists of multiple rounds.
 Each round includes a description, methods to implement, and test cases to validate the implementation. 
 
 The latest schema can be retrieved from:
-https://get.accelerate.io/challenge-toolkit/schema/version/0.2.3/schema.yaml
+https://get.accelerate.io/challenge-toolkit/schema/version/0.2.4/schema.yaml
 
 ### Root Document
-- `$schema` is always written by the Java writer using `https://get.accelerate.io/challenge-toolkit/schema/version/0.2.3/schema.yaml`. Authors should not override it.
+- `$schema` is always written by the Java writer. Authors should not override it.
 - `id` must be uppercase and unique. It is also used to build the on-disk path when exporting a challenge.
 - `version` is mandatory for the library, even though the JSON Schema does not declare it. Writers include it when generating `.../<id>/v<version>/definition.yaml`, so omit it only if you intend to manage the file manually.
 - `name` is the human-readable challenge title shown in tooling.

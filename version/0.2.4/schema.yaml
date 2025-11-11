@@ -1,0 +1,130 @@
+$schema: http://json-schema.org/draft-07/schema#
+type: object
+required:
+  - id
+  - name
+  - rounds
+properties:
+  id:
+    type: string
+    pattern: ^[A-Z]+$
+    description: >
+      A unique identifier for the coding challenge, consisting of uppercase letters only.
+      (e.g., CHK).
+  name:
+    type: string
+    description: >
+      The name of the coding challenge.
+  rounds:
+    type: array
+    description: >
+      A list of rounds in the challenge, where each round contains details about methods and tests.
+    items:
+      type: object
+      required:
+        - id
+        - description
+        - methods
+        - tests
+      properties:
+        id:
+          type: string
+          pattern: ^[A-Z]+_R[0-9]+$
+          description: >
+            A unique identifier for each round, combining the challenge ID and the round number
+            (e.g., CHK_R1).
+        description:
+          type: string
+          description: >
+            A detailed explanation of the round.
+        methods:
+          type: array
+          description: >
+            A list of methods that participants must implement in the round.
+          items:
+            type: object
+            required:
+              - name
+              - params
+              - returns
+            properties:
+              name:
+                type: string
+                description: >
+                  The name of the method to be implemented.
+              params:
+                type: array
+                description: >
+                  A list of parameter types (as strings) required by the method.
+                items:
+                  type: object
+                  required:
+                    - description
+                    - type
+                  properties:
+                    description:
+                      type: string
+                      description: >
+                        The description of the parameter.
+                    type:
+                      type: string
+                      description: >
+                        The type of the parameter.
+              returns:
+                type: object
+                required:
+                  - description
+                  - type
+                properties:
+                  description:
+                    type: string
+                    description: >
+                      The description of the value returned by the method.
+                  type:
+                    type: string
+                    description: >
+                      The type of the returned value.
+        tests:
+          type: array
+          description: >
+            A list of test cases used to validate the methods implemented in the round.
+          items:
+            type: object
+            required:
+              - id
+              - call
+              - expect
+            properties:
+              id:
+                type: string
+                pattern: ^[A-Z]+_R[0-9]+(_S[0-9]+)?_[0-9]+$
+                description: >
+                  A unique identifier for the test case, combining the challenge ID,
+                  round number, and test number (e.g., CHK_R1_01).
+              call:
+                type: object
+                description: >
+                  Defines the method call being tested, including the method name and its arguments.
+                required:
+                  - method
+                  - args
+                properties:
+                  method:
+                    type: string
+                    description: >
+                      The name of the method being tested.
+                  args:
+                    type: array
+                    description: >
+                      A list of arguments passed to the method during the test.
+              expect:
+                type: object
+                description: >
+                  Defines the expected outcome of the test. Can specify either an exact match
+                  (`equals`) or a partial match (`containsString`).
+                oneOf:
+                  - required: [equals]
+                  - required: [isNull]
+                  - required: [containsString]
+                  - required: [containsStringIgnoringCase]
+                  - required: [multilineStringEquals]

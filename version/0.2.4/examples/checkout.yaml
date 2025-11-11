@@ -1,0 +1,45 @@
+id: CHK
+name: Supermarket checkout
+rounds:
+  - id: CHK_R1
+    description: >
+      Single line description of the supermarket checkout challenge round 1
+    methods:
+      - name: checkout
+        params: 
+          - description: a string containing the SKUs of all the products in the basket
+            type: string
+        returns: 
+          description: an integer representing the total checkout value of the items 
+          type: integer
+    tests:
+      - id: CHK_R1_001
+        call:
+          method: checkout
+          args: [ABCDCBAABCABBAAA]
+        expect:
+          equals: 2
+      - id: CHK_R1_002
+        call:
+          method: checkout
+          args: [ABCDCBAABCABBAAA]
+        expect:
+          containsString: "specific text"
+      - id: CHK_R1_003
+        call:
+          method: checkout
+          args: [ABCDCBAABCABBAAA]
+        expect:
+          containsStringIgnoringCase: "some_text"
+      - id: CHK_R1_004
+        call:
+          method: checkout
+          args: [xyz]
+        expect:
+          isNull: true
+      - id: CHK_R1_S1_004
+        call:
+          method: checkout
+          args: [xyz]
+        expect:
+          isNull: true
